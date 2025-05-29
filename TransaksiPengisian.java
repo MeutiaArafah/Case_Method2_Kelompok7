@@ -4,7 +4,7 @@ public class TransaksiPengisian {
     double liter;
     double totalBayar;
 
-    void TransaksiPengisian(Kendaraan kendaraan, BBM bbm, double liter){
+    public TransaksiPengisian(Kendaraan kendaraan, BBM bbm, double liter){
         this.kendaraan = kendaraan;
         this.bbm = bbm;
         this.liter = liter;
