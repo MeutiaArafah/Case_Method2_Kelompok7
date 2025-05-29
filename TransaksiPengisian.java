@@ -8,5 +8,6 @@ public class TransaksiPengisian {
         this.kendaraan = kendaraan;
         this.bbm = bbm;
         this.liter = liter;
+        this.totalBayar = liter * bbm.hargaPerLiter;
     }
 }
