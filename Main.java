@@ -58,7 +58,7 @@ public class Main {
 
         Kendaraan kendaraan = new Kendaraan(plat, tipe, merk);
         antrianKendaraan.addLast(kendaraan);
-        System.out.println(">> Transaksi berhasil dicatat.");
+        System.out.println(">> Kendaraan berhasil ditambahkan ke antrian.");
     }
 
     static void layaniKendaraan(Scanner input) {
@@ -67,13 +67,47 @@ public class Main {
             return;
         }
 
+        int pilihanBBM;
         Kendaraan kendaraan = antrianKendaraan.removeFirst();
         System.out.println("Petugas melayani " + kendaraan.platNomor);
-        System.out.print("Masukkan Jenis BBM       : ");
-        String namaBBM = input.nextLine();
-        System.out.print("Masukkan Harga per liter : Rp ");
-        double hargaPerLiter = input.nextDouble();
-        System.out.print("Masukkan Jumlah liter    : ");
+        
+        do {
+            System.out.println("\n-- Pilih Jenis BBM --");
+            System.out.println("1. Pertalite - Rp 10.000/liter");
+            System.out.println("2. Pertamax - Rp 12.000/liter");
+            System.out.println("3. Solar - Rp 14.000/liter");
+            System.out.println("0. Kembali ke Menu Utama");
+            System.out.print("Pilihan BBM: ");
+            pilihanBBM = input.nextInt();
+            
+            if (pilihanBBM == 0) {
+                return;
+            }
+            
+            if (pilihanBBM < 1 || pilihanBBM > 3) {
+                System.out.println(">> Pilihan tidak valid. Silakan pilih 1-3.");
+            }
+        } while (pilihanBBM < 1 || pilihanBBM > 3);
+
+        String namaBBM = "";
+        double hargaPerLiter = 0;
+        
+        switch(pilihanBBM) {
+            case 1:
+                namaBBM = "Pertalite";
+                hargaPerLiter = 10000;
+                break;
+            case 2:
+                namaBBM = "Pertamax";  
+                hargaPerLiter = 12000;
+                break;
+            case 3:
+                namaBBM = "Solar";
+                hargaPerLiter = 14000;
+                break;
+        }
+        
+        System.out.print("Masukkan Jumlah liter: ");
         double liter = input.nextDouble();
 
         BBM bbm = new BBM(namaBBM, hargaPerLiter);
